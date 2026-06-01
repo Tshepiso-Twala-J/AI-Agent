@@ -32,7 +32,7 @@ function showTyping(){
 }
 
 async function getAiReply(userMessage){
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}';
     
     try {
         const response = await fetch(url, {
@@ -47,7 +47,7 @@ async function getAiReply(userMessage){
 
         if(!response.ok){
             console.error("API Error:", data);
-            return data?.error?.message ||  "An error occurred while trying to respond.";
+            return data?.error?.message ||  "An error occurred while trying to respond to your question.";
         }
 
         return(data.candidates[0]?.content?.parts[0]?.text || "Sorry, I couldn't get that.");
